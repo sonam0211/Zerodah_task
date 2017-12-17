@@ -6,5 +6,5 @@ with open(csv_file, 'r') as csvfile:
     csvReader = csv.reader(csvfile)
     next(csvReader)
     for row in csvReader:
-        print('HMSET {} code \"{}\" name \"{}\" open \"{}\" high \"{}\" low \"{}\" close \"{}\"\r'.format(int(row[0]), row[0], row[1], row[4], row[5], row[6], row[7]))
-        print('ZADD open {} {}\r'.format(float(row[4]), int(row[0])))
+        print('HMSET \"{}\" code \"{}\" name \"{}\" open \"{}\" high \"{}\" low \"{}\" close \"{}\"\r'.format(row[1].strip(), row[0], row[1], row[4], row[5], row[6], row[7]))
+        print('ZADD open {} \"{}\"\r'.format(float(row[4]), row[1].strip()))
